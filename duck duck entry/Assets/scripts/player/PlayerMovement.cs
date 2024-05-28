@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,8 +13,6 @@ public class PlayerMovement : MonoBehaviour
     public float VelocityLimit;
 
     public float Deceleration;
-
-    public float EdgePrevention;
 
     private Vector2 input;
 
@@ -29,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
     }
+
 
     void Movement()
     {
@@ -63,6 +63,6 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsGrounded(Vector2 position)
     {
-        return Physics2D.CircleCast(position, .2f, Vector2.zero, GroundMask);
+        return !Physics2D.CircleCast(position, .01f, Vector2.zero, GroundMask);
     }
 }
